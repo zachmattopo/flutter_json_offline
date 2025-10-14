@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,22 +19,22 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'list/',
       routes: {
-        "list/": (context) => ListPage(),
-        "details/": (context) => DetailsPage(),
+        "list/": (context) => const ListPage(),
+        "details/": (context) => const DetailsPage(),
       },
     );
   }
 }
 
 class ListPage extends StatefulWidget {
-  ListPage({Key? key}) : super(key: key);
+  const ListPage({Key? key}) : super(key: key);
 
   @override
   State<ListPage> createState() => _ListPageState();
 }
 
 class DetailsPage extends StatefulWidget {
-  DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({Key? key}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
