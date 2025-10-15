@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../l10n/app_localizations.dart';
 import '../cubits/bookmark_cubit/bookmark_cubit.dart';
 import 'all_posts_page.dart';
 import 'bookmarked_posts_page.dart';
@@ -13,10 +14,10 @@ class HomePage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Posts'),
+          title: Text(AppLocalizations.of(context)!.appTitle),
           bottom: TabBar(
             tabs: [
-              const Tab(text: 'All Posts'),
+              Tab(text: AppLocalizations.of(context)!.allPosts),
               BlocBuilder<BookmarkCubit, BookmarkState>(
                 builder: (context, state) {
                   int count = 0;
@@ -27,7 +28,12 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Flexible(child: const Text('Bookmarked', overflow: TextOverflow.ellipsis)),
+                        Flexible(
+                          child: Text(
+                            AppLocalizations.of(context)!.bookmarked,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                         const SizedBox(width: 4),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),

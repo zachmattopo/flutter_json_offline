@@ -1,0 +1,13 @@
+{
+    "@@locale": "ms",
+    "appTitle": "Pos",
+    "allPosts": "Semua Pos",
+    "bookmarked": "Ditanda",
+    "postDetails": "Butiran Pos",
+    "noBookmarkedPosts": "Tiada pos ditanda",
+    "comments": "Komen",
+    "seeComments": "Lihat komen",
+    "addBookmark": "Tambah Penanda",
+    "removeBookmark": "Buang Penanda",
+    "pleaseWait": "Sila tunggu..."
+}

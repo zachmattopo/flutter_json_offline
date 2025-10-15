@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'l10n/app_localizations.dart';
 import 'data/repositories/post_repository.dart';
 import 'data/repositories/bookmark_repository.dart';
 import 'data/models/post.dart';
@@ -40,6 +42,16 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en'), // English
+                Locale('ms'), // Malay
+              ],
               initialRoute: '/',
               routes: {
                 "/": (context) => const HomePage(),

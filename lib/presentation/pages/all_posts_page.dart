@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../l10n/app_localizations.dart';
 import '../cubits/posts_cubit/posts_cubit.dart';
 import '../cubits/posts_cubit/posts_state.dart';
 import '../../data/models/post.dart';
@@ -27,7 +28,7 @@ class AllPostsPage extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: Text('Please wait...'));
+          return Center(child: Text(AppLocalizations.of(context)!.pleaseWait));
         },
       ),
     );

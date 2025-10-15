@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/post.dart';
+import '../../l10n/app_localizations.dart';
 import '../cubits/bookmark_cubit/bookmark_cubit.dart';
 
 class BookmarkedDetailsPage extends StatelessWidget {
@@ -29,14 +30,14 @@ class _BookmarkedDetailsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Post details'),
+        title: Text(AppLocalizations.of(context)!.postDetails),
         actions: [
           BlocBuilder<BookmarkCubit, BookmarkState>(
             builder: (context, state) {
               final isBookmarked = context.read<BookmarkCubit>().isBookmarked(post.id);
               return IconButton(
                 icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border),
-                tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
+                tooltip: isBookmarked ? AppLocalizations.of(context)!.removeBookmark : AppLocalizations.of(context)!.addBookmark,
                 onPressed: () {
                   context.read<BookmarkCubit>().toggleBookmark(post);
                 },

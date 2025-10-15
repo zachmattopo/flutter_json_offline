@@ -1,0 +1,43 @@
+{
+    "@@locale": "en",
+    "appTitle": "Posts",
+    "allPosts": "All Posts",
+    "bookmarked": "Bookmarked",
+    "postDetails": "Post details",
+    "noBookmarkedPosts": "No bookmarked posts",
+    "comments": "Comments",
+    "seeComments": "See comments",
+    "addBookmark": "Add Bookmark",
+    "removeBookmark": "Remove Bookmark",
+    "pleaseWait": "Please wait...",
+    "@appTitle": {
+        "description": "The title shown in the app bar"
+    },
+    "@allPosts": {
+        "description": "Label for all posts tab"
+    },
+    "@bookmarked": {
+        "description": "Label for bookmarked posts tab"
+    },
+    "@postDetails": {
+        "description": "Title for post details page"
+    },
+    "@noBookmarkedPosts": {
+        "description": "Message shown when there are no bookmarked posts"
+    },
+    "@comments": {
+        "description": "Label for comments button"
+    },
+    "@seeComments": {
+        "description": "Tooltip label for comments button"
+    },
+    "@addBookmark": {
+        "description": "Tooltip for bookmark button when post is not bookmarked"
+    },
+    "@removeBookmark": {
+        "description": "Tooltip for bookmark button when post is bookmarked"
+    },
+    "@pleaseWait": {
+        "description": "Message shown while loading"
+    }
+}

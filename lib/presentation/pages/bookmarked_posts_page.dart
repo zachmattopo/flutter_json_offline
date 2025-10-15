@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/bookmark_cubit/bookmark_cubit.dart';
 import '../../data/models/post.dart';
+import '../../l10n/app_localizations.dart';
 import 'bookmarked_details_page.dart';
 
 class BookmarkedPostsPage extends StatelessWidget {
@@ -26,7 +27,7 @@ class BookmarkedPostsView extends StatelessWidget {
           } else if (state is BookmarkLoaded) {
             return _buildPostsList(context, state.bookmarkedPosts);
           }
-          return const Center(child: Text('No bookmarked posts'));
+          return Center(child: Text(AppLocalizations.of(context)!.noBookmarkedPosts));
         },
       ),
     );
@@ -34,11 +35,11 @@ class BookmarkedPostsView extends StatelessWidget {
 
   Widget _buildPostsList(BuildContext context, List<Post> posts) {
     if (posts.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Text(
-            'No bookmarked posts',
+            AppLocalizations.of(context)!.noBookmarkedPosts,
             textAlign: TextAlign.center,
           ),
         ),

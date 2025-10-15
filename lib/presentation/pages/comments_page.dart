@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/post_repository.dart';
+import '../../l10n/app_localizations.dart';
 import '../cubits/comments_cubit/comments_cubit.dart';
 import '../cubits/comments_cubit/comments_state.dart';
 
@@ -20,7 +21,7 @@ class CommentsPage extends StatelessWidget {
       create: (context) => CommentsCubit(postRepository, postId),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Comments'),
+          title: Text(AppLocalizations.of(context)!.comments),
         ),
         body: BlocBuilder<CommentsCubit, CommentsState>(
           builder: (context, state) {
@@ -85,7 +86,7 @@ class CommentsPage extends StatelessWidget {
                 ),
               );
             }
-            return const Center(child: Text('Loading comments...'));
+            return Center(child: Text(AppLocalizations.of(context)!.pleaseWait));
           },
         ),
       ),

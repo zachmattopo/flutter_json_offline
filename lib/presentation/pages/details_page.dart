@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/post_repository.dart';
+import '../../l10n/app_localizations.dart';
 import '../cubits/post_detail_cubit/post_detail_cubit.dart';
 import '../cubits/post_detail_cubit/post_detail_state.dart';
 import '../cubits/bookmark_cubit/bookmark_cubit.dart';
@@ -30,7 +31,7 @@ class _DetailsPageContent extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Post details'),
+        title: Text(AppLocalizations.of(context)!.postDetails),
         actions: [
           BlocBuilder<PostDetailCubit, PostDetailState>(
             builder: (context, state) {
@@ -40,7 +41,7 @@ class _DetailsPageContent extends StatelessWidget {
                     final isBookmarked = context.read<BookmarkCubit>().isBookmarked(state.post.id);
                     return IconButton(
                       icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border),
-                      tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
+                      tooltip: isBookmarked ? AppLocalizations.of(context)!.removeBookmark : AppLocalizations.of(context)!.addBookmark,
                       onPressed: () {
                         context.read<BookmarkCubit>().toggleBookmark(state.post);
                       },
@@ -96,7 +97,7 @@ class _DetailsPageContent extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: Text('Please wait...'));
+          return Center(child: Text(AppLocalizations.of(context)!.pleaseWait));
         },
       ),
       floatingActionButton: BlocBuilder<PostDetailCubit, PostDetailState>(
@@ -112,9 +113,9 @@ class _DetailsPageContent extends StatelessWidget {
                       ),
                     );
                   },
-                  tooltip: 'See comments',
+                  tooltip: AppLocalizations.of(context)!.seeComments,
                   icon: const Icon(Icons.comment),
-                  label: const Text('Comments'),
+                  label: Text(AppLocalizations.of(context)!.comments),
                 )
               : const SizedBox.shrink();
         },
