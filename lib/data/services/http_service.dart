@@ -14,7 +14,7 @@ class HttpService {
         'Content-Type': 'application/json',
         'User-Agent': 'TechnicalTest.Flutter/1.0',
       },
-    );
+    ).timeout(const Duration(seconds: 5));
     
     if (response.statusCode == 200) {
       return json.decode(response.body) as Map<String, dynamic>;
@@ -35,7 +35,7 @@ class HttpService {
         'Content-Type': 'application/json',
         'User-Agent': 'TechnicalTest.Flutter/1.0',
       },
-    );
+    ).timeout(const Duration(seconds: 5));
     
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);

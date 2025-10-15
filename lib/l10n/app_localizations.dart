@@ -128,13 +128,13 @@ abstract class AppLocalizations {
   /// **'No bookmarked posts'**
   String get noBookmarkedPosts;
 
-  /// Label for comments
+  /// Label for comments button
   ///
   /// In en, this message translates to:
   /// **'Comments'**
   String get comments;
 
-  /// Label for see comments button
+  /// Tooltip label for comments button
   ///
   /// In en, this message translates to:
   /// **'See comments'**
