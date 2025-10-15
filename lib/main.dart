@@ -14,23 +14,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final postRepository = PostRepository();
+    return RepositoryProvider(
+      create: (context) => PostRepository(),
+      child: Builder(
+        builder: (context) {
+          final postRepository = context.read<PostRepository>();
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => PostsCubit(postRepository)..loadPosts(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: 'list/',
-        routes: {
-          "list/": (context) => const ListPage(),
-          "details/": (context) => const DetailsPage(),
+          return BlocProvider(
+            create: (context) => PostsCubit(postRepository)..loadPosts(),
+            child: MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              initialRoute: 'list/',
+              routes: {
+                "list/": (context) => const ListPage(),
+                "details/": (context) => const DetailsPage(),
+              },
+            ),
+          );
         },
       ),
     );
