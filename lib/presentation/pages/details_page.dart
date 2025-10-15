@@ -37,9 +37,12 @@ class _DetailsPageContent extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is PostDetailLoaded) {
             return SafeArea(
+              bottom: false,
+              top: false,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
+                  padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

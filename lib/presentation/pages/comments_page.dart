@@ -6,7 +6,7 @@ import '../cubits/comments_cubit/comments_state.dart';
 
 class CommentsPage extends StatelessWidget {
   final int postId;
-  
+
   const CommentsPage({
     Key? key,
     required this.postId,
@@ -15,7 +15,7 @@ class CommentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final postRepository = context.read<PostRepository>();
-    
+
     return BlocProvider(
       create: (context) => CommentsCubit(postRepository, postId),
       child: Scaffold(
@@ -28,7 +28,10 @@ class CommentsPage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (state is CommentsLoaded) {
               return SafeArea(
+                bottom: false,
+                top: false,
                 child: ListView.builder(
+                  padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
                   itemCount: state.comments.length,
                   itemBuilder: (context, index) {
                     final comment = state.comments[index];
