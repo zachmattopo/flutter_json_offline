@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repositories/post_repository.dart';
 import '../cubits/post_detail_cubit/post_detail_cubit.dart';
 import '../cubits/post_detail_cubit/post_detail_state.dart';
+import '../cubits/bookmark_cubit/bookmark_cubit.dart';
 import 'comments_page.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -11,7 +12,7 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final postRepository = context.read<PostRepository>();
-
+    
     return BlocProvider(
       create: (context) => PostDetailCubit(postRepository),
       child: _DetailsPageContent(),
@@ -30,6 +31,27 @@ class _DetailsPageContent extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post details'),
+        actions: [
+          BlocBuilder<PostDetailCubit, PostDetailState>(
+            builder: (context, state) {
+              if (state is PostDetailLoaded) {
+                return BlocBuilder<BookmarkCubit, BookmarkState>(
+                  builder: (context, bookmarkState) {
+                    final isBookmarked = context.read<BookmarkCubit>().isBookmarked(state.post.id);
+                    return IconButton(
+                      icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border),
+                      tooltip: isBookmarked ? 'Remove Bookmark' : 'Add Bookmark',
+                      onPressed: () {
+                        context.read<BookmarkCubit>().toggleBookmark(state.post);
+                      },
+                    );
+                  },
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
       ),
       body: BlocBuilder<PostDetailCubit, PostDetailState>(
         builder: (context, state) {
@@ -64,7 +86,15 @@ class _DetailsPageContent extends StatelessWidget {
               ),
             );
           } else if (state is PostDetailError) {
-            return Center(child: Text(state.message));
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  state.message,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
           }
           return const Center(child: Text('Please wait...'));
         },
@@ -82,7 +112,7 @@ class _DetailsPageContent extends StatelessWidget {
                       ),
                     );
                   },
-                  tooltip: 'Comments',
+                  tooltip: 'See comments',
                   icon: const Icon(Icons.comment),
                   label: const Text('Comments'),
                 )

@@ -75,7 +75,15 @@ class CommentsPage extends StatelessWidget {
                 ),
               );
             } else if (state is CommentsError) {
-              return Center(child: Text(state.message));
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    state.message,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              );
             }
             return const Center(child: Text('Loading comments...'));
           },
