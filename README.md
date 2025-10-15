@@ -1,5 +1,16 @@
 # Bright Flutter Technical Test
 
+## Quick notes from Hafiz:
+
+- The project is now using a simplified version of CLEAN architecture:
+    1. Data models for entity representation.
+    2. Repository pattern for data access.
+    3. Cubit pattern for state management.
+
+- Flutter version used: **3.35.6** with Flutter Version Management (FVM). If not using FVM, please edit the Flutter SDK path in `.vscode/settings.json` to your local Flutter installation.
+
+- Java version **21**, Gradle version **8.13**, AGP version **8.11.2**, Kotlin version **2.1.0**. Please check your local installed versions respectively to prevent build issues.
+
 ## The Starter Project
 
 This test project uses the JSON placeholder API
