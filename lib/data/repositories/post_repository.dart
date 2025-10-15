@@ -1,4 +1,5 @@
 import '../models/post.dart';
+import '../models/comment.dart';
 import '../services/http_service.dart';
 
 class PostRepository {
@@ -22,6 +23,15 @@ class PostRepository {
       return Post.fromJson(json);
     } catch (e) {
       throw Exception('Failed to load post details: $e');
+    }
+  }
+
+  Future<List<Comment>> getPostComments(int postId) async {
+    try {
+      final jsonList = await _httpService.getList('/posts/$postId/comments');
+      return jsonList.map((json) => Comment.fromJson(json)).toList();
+    } catch (e) {
+      throw Exception('Failed to load comments: $e');
     }
   }
 
